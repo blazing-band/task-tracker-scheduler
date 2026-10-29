@@ -1,0 +1,23 @@
+name: task-tracker-scheduler
+
+services:
+  web:
+    container_name: task-tracker-scheduler-web
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image:
+      task-tracker-scheduler-web:1.0.0
+    ports:
+      - "${APP_PORT}:"
+
+  worker:
+    container_name: task-tracker-scheduler-worker
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image:
+      task-tracker-scheduler-worker:1.0.0
+    command: celery -A proj beat

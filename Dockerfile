@@ -10,4 +10,6 @@ RUN uv sync --frozen --no-dev
 
 COPY . .
 
+EXPOSE 8080
 
+CMD ["uvicorn", "src.task_tracker_scheduler.app:create_app", "--host", "0.0.0.0", "--port", "8080"]
