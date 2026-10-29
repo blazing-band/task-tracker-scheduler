@@ -1,0 +1,1 @@
+run celery beat: celery -A proj beat
